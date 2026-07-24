@@ -1,0 +1,24 @@
+name: Validate QA checklists
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate-checklists:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate checklist files
+        run: |
+          test -f qa-checklist.md
+          test -f password-reset-checklist.md
+          grep -Fq -- "- [ ] Verify login" qa-checklist.md
+          grep -Fq -- "- [ ] Verify empty credentials" qa-checklist.md
+          grep -Fq -- "- [ ] Verify valid email." password-reset-checklist.md
+          grep -Fq -- "- [ ] Verify password mismatch." password-reset-checklist.md
