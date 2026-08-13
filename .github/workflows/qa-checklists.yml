@@ -21,4 +21,4 @@ jobs:
           grep -Fq -- "- [ ] Verify login" qa-checklist.md
           grep -Fq -- "- [ ] Verify empty credentials" qa-checklist.md
           grep -Fq -- "- [ ] Verify valid email." password-reset-checklist.md
-         
+          grep -Fq -- "- [ ] Verify password mismach." password-reset-checklist.md
